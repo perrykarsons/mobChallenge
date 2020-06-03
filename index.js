@@ -34,13 +34,13 @@ app.get('/pictures', async (req, res) => { // localhost:3000/ home page
 
 app.post('/pictures', function (req, res) {
     if(req.files){
-      let  file = req.files.sampleFile;
+      let file = req.files.sampleFile;
       file.mv('./public/img/'+file.name,function(err){
         if(err){
-          return  res.status(400).send("error occured")
+          return  res.status(400).send(`Error uploading file`)
         }
         else{
-          console.log("saved");
+          console.log(`File uploaded`);
           res.redirect('pictures')
         
         }

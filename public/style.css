@@ -1,0 +1,15 @@
+* {
+    background-color: lightgray;
+    font-family: verdana;
+
+}
+h1 {
+    font-size: 16pt;
+}
+.submit{
+    border-radius: 25px;
+}
+
+input {
+    width: 200px;
+}
