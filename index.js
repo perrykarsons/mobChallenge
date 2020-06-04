@@ -32,26 +32,30 @@ app.get("/", async (req, res) => {
   res.render("index");
 });
 
+let fileNum = 0;
+
+
 app.get("/pictures", async (req, res) => {
-  // fs.readdir(path.join(__dirname, "public", "img"), function (err, files) { // filesystem read directory of images
-  //   if (err) {
-  //     return res.status(400).send(`Unable to access directory`);
-  //   }
-  //   res.render("pictures", { files }); // render file list in pictures
-  // });
-  files = fs.readdirSync(path.join(__dirname, "public", "img")); // access list of files in img
-  res.render('pictures', {files})
+  fs.readdir(path.join(__dirname, "public", "img"), function (err, files) { // filesystem read directory of images
+    if (err) {
+      return res.status(400).send(`Unable to access directory`);
+    }
+    res.render("pictures", { files }); // render file list in pictures
+  });
+  // files = fs.readdirSync(path.join(__dirname, "public", "img")); // access list of files in img
+  // res.render('pictures', {files})
   
 });
 
 app.post("/pictures", function (req, res) { // post to pictures
   if (req.files) { // if files exist
     let file = req.files.sampleFile; // grab file from form
-    file.mv(path.join(__dirname, "public", "img", file.name), function (err) { //move file to location
+    file.mv(path.join(__dirname, "public", "img", fileNum + file.name), function (err) { //move file to location
       if (err) {
         return res.status(400).send(`Error uploading file`);
       } else {
         console.log(`File uploaded`);
+        fileNum++
         res.redirect("pictures"); // once posted redirect to pictures
       }
     });
