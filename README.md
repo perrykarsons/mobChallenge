@@ -1,7 +1,4 @@
 # MOB CHALLENGE
 
 # Authors:
-Frankie
-Kerry
-Harry
-James
+Frankie - Kerry - Harry - James

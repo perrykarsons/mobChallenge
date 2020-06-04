@@ -13,3 +13,10 @@ h1 {
 input {
     width: 200px;
 }
+
+
+img {
+    width: 30%;
+    height: 30%;
+    border-radius: 25px;
+}
